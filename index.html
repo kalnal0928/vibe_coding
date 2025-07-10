@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>한국어 음운 퀴즈 - Vibe Coding</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+    <div class="container">
+        <!-- Header -->
+        <header class="header">
+            <div class="logo">
+                <i class="fas fa-code"></i>
+                <h1>Vibe Coding</h1>
+            </div>
+            <div class="github-link">
+                <a href="https://github.com" target="_blank">
+                    <i class="fab fa-github"></i>
+                    GitHub
+                </a>
+            </div>
+        </header>
+
+        <!-- Main Content -->
+        <main class="main-content">
+            <!-- Welcome Section -->
+            <section id="welcome-section" class="welcome-section">
+                <div class="welcome-content">
+                    <h2>한국어 음운 퀴즈에 오신 것을 환영합니다!</h2>
+                    <p>한국어의 음운에 대한 이해도를 테스트해보세요.</p>
+                    <div class="quiz-info">
+                        <div class="info-item">
+                            <i class="fas fa-question-circle"></i>
+                            <span>총 5문제</span>
+                        </div>
+                        <div class="info-item">
+                            <i class="fas fa-clock"></i>
+                            <span>제한시간 없음</span>
+                        </div>
+                        <div class="info-item">
+                            <i class="fas fa-trophy"></i>
+                            <span>객관식 문제</span>
+                        </div>
+                    </div>
+                    <button id="start-quiz-btn" class="start-btn">퀴즈 시작하기</button>
+                </div>
+            </section>
+
+            <!-- Quiz Section -->
+            <section id="quiz-section" class="quiz-section hidden">
+                <div class="quiz-header">
+                    <div class="progress-container">
+                        <div class="progress-bar">
+                            <div id="progress-fill" class="progress-fill"></div>
+                        </div>
+                        <span id="question-counter" class="question-counter">1 / 5</span>
+                    </div>
+                </div>
+
+                <div class="quiz-content">
+                    <div id="question-container" class="question-container">
+                        <h3 id="question-text" class="question-text"></h3>
+                        <div id="options-container" class="options-container">
+                            <!-- 선택지들이 동적으로 생성됩니다 -->
+                        </div>
+                    </div>
+
+                    <div class="quiz-controls">
+                        <button id="prev-btn" class="control-btn" disabled>이전</button>
+                        <button id="next-btn" class="control-btn" disabled>다음</button>
+                        <button id="submit-btn" class="control-btn submit-btn hidden">제출하기</button>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Result Section -->
+            <section id="result-section" class="result-section hidden">
+                <div class="result-content">
+                    <div class="result-icon">
+                        <i id="result-emoji" class="fas fa-trophy"></i>
+                    </div>
+                    <h2 id="result-title">퀴즈 완료!</h2>
+                    <div class="score-display">
+                        <div class="score-circle">
+                            <span id="score-text">0/5</span>
+                        </div>
+                        <p id="score-message">잘하셨습니다!</p>
+                    </div>
+                    
+                    <div class="result-details">
+                        <h3>상세 결과</h3>
+                        <div id="answer-review" class="answer-review">
+                            <!-- 답안 리뷰가 동적으로 생성됩니다 -->
+                        </div>
+                    </div>
+
+                    <div class="result-actions">
+                        <button id="retry-btn" class="action-btn retry-btn">다시 도전하기</button>
+                        <button id="share-btn" class="action-btn share-btn">결과 공유하기</button>
+                    </div>
+                </div>
+            </section>
+        </main>
+
+        <!-- Footer -->
+        <footer class="footer">
+            <p>&copy; 2025 Vibe Coding. 한국어 음운 학습을 위한 퀴즈 플랫폼</p>
+        </footer>
+    </div>
+
+    <!-- Loading Overlay -->
+    <div id="loading" class="loading hidden">
+        <div class="spinner"></div>
+        <p>문제를 불러오는 중...</p>
+    </div>
+
+    <!-- Toast Notification -->
+    <div id="toast" class="toast hidden">
+        <span id="toast-message"></span>
+    </div>
+
+    <script src="question.js"></script>
+</body>
+</html>
