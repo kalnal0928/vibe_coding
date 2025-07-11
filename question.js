@@ -3,7 +3,7 @@ const quizData = [
     {
         id: 1,
         question: "다음 단어의 뜻을 구별해 주는 요소로 알맞지 않은 것은?",
-        image: "images/01.jpg",
+        image: "images/01.png",
         options: [
             { label: "①", text: "곰, 솜 - 자음" },
             { label: "②", text: "종, 공 - 자음" },
@@ -17,7 +17,7 @@ const quizData = [
     {
         id: 2,
         question: "국어의 음운에 대한 설명으로 적절하지 않은 것은?",
-        image: "images/02.jpg",
+        image: "images/02.png",
         options: [
             { label: "①", text: "음운의 종류에는 자음과 모음이 있다." },
             { label: "②", text: "말의 뜻을 구별해 주는 소리의 단위이다." },
@@ -256,7 +256,27 @@ function displayQuestion() {
         const imageElement = document.createElement('div');
         imageElement.id = 'question-image';
         imageElement.className = 'question-image';
-        imageElement.innerHTML = `<img src="${currentQ.image}" alt="문제 이미지" />`;
+        
+        const img = document.createElement('img');
+        img.src = currentQ.image;
+        img.alt = '문제 이미지';
+        
+        // 이미지 로딩 에러 처리
+        img.onerror = function() {
+            this.style.display = 'none';
+            const errorMsg = document.createElement('div');
+            errorMsg.className = 'image-error';
+            errorMsg.textContent = '이미지를 불러올 수 없습니다.';
+            errorMsg.style.cssText = 'text-align: center; color: #e74c3c; padding: 20px; border: 1px dashed #e74c3c; border-radius: 8px; margin: 10px 0;';
+            imageElement.appendChild(errorMsg);
+        };
+        
+        // 이미지 로딩 성공 처리
+        img.onload = function() {
+            console.log('이미지 로딩 성공:', currentQ.image);
+        };
+        
+        imageElement.appendChild(img);
         
         // 문제 텍스트 다음에 이미지 삽입
         elements.questionText.parentNode.insertBefore(imageElement, elements.optionsContainer);
