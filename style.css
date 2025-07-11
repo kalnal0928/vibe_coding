@@ -186,6 +186,28 @@ body {
     line-height: 1.6;
 }
 
+/* 문제 이미지 스타일 */
+.question-image {
+    margin: 1.5rem 0;
+    text-align: center;
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0 2px 15px rgba(0, 0, 0, 0.1);
+}
+
+.question-image img {
+    max-width: 100%;
+    height: auto;
+    display: block;
+    margin: 0 auto;
+    border-radius: 10px;
+    transition: transform 0.3s ease;
+}
+
+.question-image img:hover {
+    transform: scale(1.02);
+}
+
 .options-container {
     display: flex;
     flex-direction: column;
@@ -528,6 +550,14 @@ body {
     
     .question-text {
         font-size: 1.1rem;
+    }
+    
+    .question-image {
+        margin: 1rem 0;
+    }
+    
+    .question-image img {
+        border-radius: 8px;
     }
 }
 

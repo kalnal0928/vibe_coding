@@ -3,6 +3,7 @@ const quizData = [
     {
         id: 1,
         question: "다음 단어의 뜻을 구별해 주는 요소로 알맞지 않은 것은?",
+        image: "images/01.jpg",
         options: [
             { label: "①", text: "곰, 솜 - 자음" },
             { label: "②", text: "종, 공 - 자음" },
@@ -16,6 +17,7 @@ const quizData = [
     {
         id: 2,
         question: "국어의 음운에 대한 설명으로 적절하지 않은 것은?",
+        image: "images/02.jpg",
         options: [
             { label: "①", text: "음운의 종류에는 자음과 모음이 있다." },
             { label: "②", text: "말의 뜻을 구별해 주는 소리의 단위이다." },
@@ -243,6 +245,22 @@ function displayQuestion() {
     
     elements.questionText.textContent = `${quiz.currentQuestion + 1}. ${currentQ.question}`;
     elements.questionCounter.textContent = `${quiz.currentQuestion + 1} / ${quizData.length}`;
+    
+    // 이미지가 있는 경우 표시
+    const existingImage = document.getElementById('question-image');
+    if (existingImage) {
+        existingImage.remove();
+    }
+    
+    if (currentQ.image) {
+        const imageElement = document.createElement('div');
+        imageElement.id = 'question-image';
+        imageElement.className = 'question-image';
+        imageElement.innerHTML = `<img src="${currentQ.image}" alt="문제 이미지" />`;
+        
+        // 문제 텍스트 다음에 이미지 삽입
+        elements.questionText.parentNode.insertBefore(imageElement, elements.optionsContainer);
+    }
     
     // 선택지 생성
     elements.optionsContainer.innerHTML = '';
